@@ -8,6 +8,16 @@ block content
     a(href='add' class='btn btn-primary') Tambah Data
     br
     br
+    .md-form.mt-0
+        form(method='GET')
+            input.form-control(type='text', placeholder='...', aria-label='Search', name='nama')
+
+        button#button.btn.btn-default(type='button' title='Search Database')
+        | Search
+
+    br
+    br
+
     table.table
       thead
         tr

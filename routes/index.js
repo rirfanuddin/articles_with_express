@@ -3,10 +3,19 @@ var router = express.Router();
 
 /* GET home page - list all data mahasiswa */
 router.get('/', function(req, res, next){
-  connection.query('SELECT * FROM mahasiswa', function(error, results, fields){
-    if(error) throw error;
-    res.render('index', {title : 'Get all data mahasiswa', data : results})
-  });
+  if(req.query.nama == null){
+    connection.query('SELECT * FROM mahasiswa', function(error, results, fields){
+      if(error) throw error;
+      res.render('index', {title : 'Get all data mahasiswa', data : results})
+    });
+  }
+  else{
+    var nama = req.query.nama;
+    connection.query(`SELECT * FROM mahasiswa WHERE nama='${nama}'`, function(error, results, fields){
+      if(error) throw error;
+      res.render('index', {title : 'Get all data mahasiswa', data : results})
+    });
+  }
 });
 
 /* POST add data mahasiswa */
