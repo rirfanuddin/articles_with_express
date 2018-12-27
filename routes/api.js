@@ -17,4 +17,16 @@ router.post('/', function(req, res, next) {
     });
 });
 
+/* PUT data. */
+router.put('/:id', function(req, res, next) {
+    var id      = req.params.id;
+    var nama    = req.body.nama;
+    var nim     = req.body.nim;
+    var jurusan = req.body.jurusan;
+    connection.query(`UPDATE mahasiswa SET nama='${nama}', nim='${nim}', jurusan='${jurusan}' WHERE id=${id}`, function (error, results, fields) {
+        if (error) throw error;
+        res.json('Success');
+    });
+});
+
 module.exports = router;
