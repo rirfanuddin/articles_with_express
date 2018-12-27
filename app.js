@@ -3,11 +3,29 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mysql = require('mysql');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+//db connection
+var connection = mysql.createConnection({
+  host      : 'localhost',
+  user      : 'root',
+  password  : 'root',
+  database  : 'articles_with_express'
+});
+
+connection.connect();
+global.connection = connection;
+
+// to check, is connect
+connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+  if (error) throw error;
+  console.log('The solution is: ', results[0].solution);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
