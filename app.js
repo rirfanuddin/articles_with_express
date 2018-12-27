@@ -22,9 +22,9 @@ connection.connect();
 global.connection = connection;
 
 // to check, is connect
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+connection.query('SELECT 100 + 100 AS solution', function (error, results, fields) {
   if (error) throw error;
-  console.log('The solution is: ', results[0].solution);
+  console.log('Status Mysql: ', results[0].solution, ' OK');
 });
 
 // view engine setup

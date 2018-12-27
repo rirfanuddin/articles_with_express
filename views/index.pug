@@ -1,5 +1,29 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div(class='container')
+    h1= title
+    p List Data Mahasiswa
+    br
+    a(href='add' class='btn btn-primary') Tambah Data
+    br
+    br
+    table.table
+      thead
+        tr
+          th(scope='col') #
+          th(scope='col') Nama
+          th(scope='col') NIM
+          th(scope='col') Jurusan
+          th(scope='col') Aksi
+      tbody
+        each val, index in data
+          tr
+            th(scope='row') #{val.id}
+            td #{val.nama}
+            td #{val.nim}
+            td #{val.jurusan}
+            td
+              a(href='edit/' + val.id_mhs class='btn btn-primary') Edit
+              a(href='del/' + val.id_mhs class='btn btn-danger') Hapus
+
