@@ -29,4 +29,13 @@ router.put('/:id', function(req, res, next) {
     });
 });
 
+/* DELETE data. */
+router.delete('/:id', function(req, res, next) {
+    var id      = req.params.id;
+    connection.query(`DELETE FROM mahasiswa WHERE id=${id}`, function (error, results, fields) {
+        if (error) throw error;
+        res.json('Success');
+    });
+});
+
 module.exports = router;
