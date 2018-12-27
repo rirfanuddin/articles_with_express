@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    div(class='container')
+        h1= title
+        p Tambah Data Mahasiswa
+        br
+        a(href='/' class='btn btn-primary') Kembali
+        br
+        br
+        form(method='post')
+            .form-group
+                label(for='nama') Nama
+                input#nama.form-control(name='nama' type='text' placeholder="Nama")
+            .form-group
+                label(for='nim') NIM
+                input#nama.form-control(name='nim' type='text' placeholder="NIM")
+            .form-group
+                label(for='jurusan') Jurusan
+                input#nama.form-control(name='jurusan' type='text' placeholder="Jurusan")
+            button.btn.btn-primary(type='submit') Simpan
+
